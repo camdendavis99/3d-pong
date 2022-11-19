@@ -368,7 +368,7 @@ def main():
             done = True
 
         # Collision detection with the rackets/players.
-        time_elapsed = time.clock() - last_hit_time
+        time_elapsed = time.process_time() - last_hit_time
         col_player = paddle_hit(player, curr_ball, time_elapsed)
         col_computer = paddle_hit(computer, curr_ball, time_elapsed)
 
@@ -382,7 +382,7 @@ def main():
         if col_player or col_computer:
             curr_ball.direction.z *= -1  # Reverse the z component of the vector.
             curr_ball.hit()
-            last_hit_time = time.clock()
+            last_hit_time = time.process_time()
 
         if curr_ball.position.z <= 0:  # front wall
             computer.score += 1
