@@ -12,7 +12,7 @@ class FindHand:
         self.handCascade = cv2.CascadeClassifier(cascPath)
         log.basicConfig(filename='webcam.log', level=log.INFO)
 
-        self.video_capture = cv2.VideoCapture(0)
+        self.video_capture = cv2.VideoCapture(1)
         self.anterior = 0
         self.first_frame = None
     
