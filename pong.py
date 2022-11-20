@@ -103,15 +103,14 @@ def main():
 
     # Main game loop
     while not done:
-        # Event handling.
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                done = True
-
-        # Registers if the user presses 'q' to quit the game
+        
+        # Check if user quits
         keys = pygame.key.get_pressed()
         if keys[pygame.K_q]:
             done = True
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
 
         """
         # Moves the player and computer
