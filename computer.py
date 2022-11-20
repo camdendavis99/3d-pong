@@ -61,7 +61,7 @@ class Computer(pygame.sprite.Sprite):
                 self.move_up()
 
     def move(self, ball_position, ball_zdirection):
-        paddle_center = Vector2(self.position.x + self.racket_width//2, self.position.y + self.racket_height//2)
+        paddle_center = Vector2(self.position.x + self.racket_width // 2, self.position.y + self.racket_height // 2)
 
         if ball_zdirection < 0:
             self.move_to_middle()
@@ -81,7 +81,8 @@ class Computer(pygame.sprite.Sprite):
         size = Vector2(int(DEPTH_RATIO * self.racket_width), int(DEPTH_RATIO * self.racket_height))
 
         new_dist_from_center = Vector2(int(dist_from_center.x * DEPTH_RATIO), int(dist_from_center.y * DEPTH_RATIO))
-        draw_position = Vector2(WIN_CENTER.x + new_dist_from_center.x - size.x//2, WIN_CENTER.y + new_dist_from_center.y - size.y//2)
+        draw_position = Vector2(WIN_CENTER.x + new_dist_from_center.x - size.x // 2, 
+                                WIN_CENTER.y + new_dist_from_center.y - size.y // 2)
 
         draw_image = pygame.Surface([size.x, size.y])
         draw_image.fill(GRAY)

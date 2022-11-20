@@ -8,6 +8,7 @@ from player import Player
 from computer import Computer
 from settings import *
 
+
 hand = FindHand()
 pygame.init()
 
@@ -90,10 +91,10 @@ def render_score(player, computer, font):
 
 
 def paddle_hit(paddle, ball, time_elapsed):
-    in_paddle_xrange = ball.position.x > int(paddle.position.x) - 4 \
-                       and ball.position.x < int(paddle.position.x) + paddle.racket_width + 4
-    in_paddle_yrange = ball.position.y > int(paddle.position.y) - 4 \
-                       and ball.position.y < int(paddle.position.y) + paddle.racket_height + 4
+    in_paddle_xrange = ball.position.x > int(paddle.position.x) - 4 and \
+        ball.position.x < int(paddle.position.x) + paddle.racket_width + 4
+    in_paddle_yrange = ball.position.y > int(paddle.position.y) - 4 and \
+        ball.position.y < int(paddle.position.y) + paddle.racket_height + 4
 
     in_paddle_zrange = abs(ball.position.z - paddle.position.z) < 50
     paddle.recent_hit = time_elapsed < 0.5
@@ -112,7 +113,7 @@ def drawBackground(screen, ball_depth):
     right_marker_x = WIN_WIDTH - left_marker_x
     marker_top_y = depth * ((WIN_HEIGHT - BACK_WIN_HEIGHT) // 2)
     marker_bottom_y = WIN_HEIGHT - marker_top_y
-    marker_width = int((1 - depth)*6) + 1
+    marker_width = int((1 - depth) * 6) + 1
 
     # Draws ball depth markers
     pygame.draw.line(screen, RED, [left_marker_x, marker_top_y], [left_marker_x, marker_bottom_y], marker_width)
@@ -131,7 +132,7 @@ def drawBackground(screen, ball_depth):
 
 def main():
     screen = pygame.display.set_mode(DISPLAY, 0, 32)
-    #screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+    # screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     clock = pygame.time.Clock()
     last_hit_time = 0
 
@@ -214,7 +215,7 @@ def main():
         screen.blit(computer_score, (WIN_CENTER.x + 100, 10))
         screen.blit(goal_text, (WIN_CENTER.x, 0))
         drawBackground(screen, curr_ball.position.z)
-        #all_sprites.draw(screen)
+        # all_sprites.draw(screen)
 
         player.draw(screen)
         computer.draw(screen)
