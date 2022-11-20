@@ -103,7 +103,7 @@ def main():
 
     # Main game loop
     while not done:
-        
+
         # Check if user quits
         keys = pygame.key.get_pressed()
         if keys[pygame.K_q]:

@@ -41,15 +41,21 @@ class Player(pygame.sprite.Sprite):
     """
 
     def move(self, hand):
-        location = hand.get_hand_location()
-        if location is None:
-            mx, my = (self.last_position.x, self.last_position.y)
+        if MOUSE_MODE:
+            mx, my = pygame.mouse.get_pos()
+            print(mx, my)
         else:
-            mx, my = (1 - location[0]) * WIN_WIDTH, location[1] * WIN_HEIGHT
-            self.last_position.x, self.last_position.y = mx, my
+            location = hand.get_hand_location()
+            if location is None:
+                mx, my = (self.last_position.x, self.last_position.y)
+            else:
+                mx, my = (1 - location[0]) * WIN_WIDTH, location[1] * WIN_HEIGHT        
+
+        self.last_position.x, self.last_position.y = mx, my
         dist = np.linalg.norm(np.array((self.position.x, self.position.y)) - np.array((mx, my)))
         move_dist = 25 if dist >= 100 else dist * 0.25
         m = 99999
+
         if (mx - self.position.x) != 0:
             m = (my - self.position.y) / (mx - self.position.x)
         if mx > self.position.x:

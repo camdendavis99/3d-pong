@@ -1,6 +1,6 @@
 from pygame.math import Vector3
 
-
+MOUSE_MODE = True
 FPS = 30
 WIN_WIDTH = 1538
 WIN_HEIGHT = 834
